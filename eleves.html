@@ -91,37 +91,20 @@ td{
 <h2>Ajouter un élève</h2>
 
 <form>
-<input type="text" placeholder="Matricule">
-<input type="text" placeholder="Nom">
-<input type="text" placeholder="Prénom">
-
-<select>
-<option>Sexe</option>
-<option>Masculin</option>
-<option>Féminin</option>
-</select>
-
-<input type="date">
-
-<option>----- MATERNELLE -----</option>
-<option>Crèche</option>
-<option>Petite Section (PS)</option>
-<option>Moyenne Section (MS)</option>
-<option>Grande Section (GS)</option>
-
-<option>----- PRIMAIRE -----</option>
-<option>CP1</option>
-<option>CP2</option>
 <option>CE1</option>
 <option>CE2</option>
 <option>CM1</option>
 <option>CM2</option>
 </select>
 
-<input type="text" placeholder="Nom du parent / tuteur">
-<input type="tel" placeholder="Téléphone">
+<input type="text" id="parent" placeholder="Nom du parent / tuteur">
 
-<button type="button">Enregistrer l'élève</button>
+<input type="tel" id="telephone" placeholder="Téléphone">
+
+<button type="button" id="btnEleve">
+Enregistrer l'élève
+</button>
+    
 </form>
 </div>
 
