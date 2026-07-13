@@ -256,25 +256,43 @@ Enregistrer l'élève
 
 <script>
 
+// Charger les élèves déjà enregistrés
+window.onload = function(){
+
+let eleves = JSON.parse(localStorage.getItem("elevesSJB")) || [];
+
+let table = document.getElementById("tableEleves");
+
+eleves.forEach(function(eleve){
+
+let ligne = table.insertRow(-1);
+
+ligne.insertCell(0).innerHTML = eleve.matricule;
+ligne.insertCell(1).innerHTML = eleve.nom;
+ligne.insertCell(2).innerHTML = eleve.prenom;
+ligne.insertCell(3).innerHTML = eleve.sexe;
+ligne.insertCell(4).innerHTML = eleve.niveau;
+ligne.insertCell(5).innerHTML = eleve.classe;
+ligne.insertCell(6).innerHTML = eleve.parent;
+ligne.insertCell(7).innerHTML = eleve.telephone;
+
+});
+
+};
+
+
+
+// Enregistrement d'un nouvel élève
 document.getElementById("btnEleve").addEventListener("click", function(){
 
-
 let matricule = document.getElementById("matricule").value;
-
 let nom = document.getElementById("nom").value;
-
 let prenom = document.getElementById("prenom").value;
-
 let sexe = document.getElementById("sexe").value;
-
 let niveau = document.getElementById("niveau").value;
-
 let classe = document.getElementById("classe").value;
-
 let parent = document.getElementById("parent").value;
-
 let telephone = document.getElementById("telephone").value;
-
 
 
 if(nom === "" || prenom === "" || classe === ""){
@@ -286,61 +304,53 @@ return;
 }
 
 
-
+// Ajout dans le tableau
 let table = document.getElementById("tableEleves");
 
 let ligne = table.insertRow(-1);
 
-
-
 ligne.insertCell(0).innerHTML = matricule;
-
 ligne.insertCell(1).innerHTML = nom;
-
 ligne.insertCell(2).innerHTML = prenom;
-
 ligne.insertCell(3).innerHTML = sexe;
-
 ligne.insertCell(4).innerHTML = niveau;
-
 ligne.insertCell(5).innerHTML = classe;
-
 ligne.insertCell(6).innerHTML = parent;
-
 ligne.insertCell(7).innerHTML = telephone;
 
 
+// Sauvegarde locale
+let eleves = JSON.parse(localStorage.getItem("elevesSJB")) || [];
 
-// Nettoyage du formulaire après enregistrement
+eleves.push({
+matricule: matricule,
+nom: nom,
+prenom: prenom,
+sexe: sexe,
+niveau: niveau,
+classe: classe,
+parent: parent,
+telephone: telephone
+});
 
+localStorage.setItem("elevesSJB", JSON.stringify(eleves));
+
+
+// Réinitialisation du formulaire
 document.getElementById("matricule").value="";
-
 document.getElementById("nom").value="";
-
 document.getElementById("prenom").value="";
-
 document.getElementById("sexe").value="";
-
 document.getElementById("niveau").value="";
-
 document.getElementById("classe").value="";
-
 document.getElementById("parent").value="";
-
 document.getElementById("telephone").value="";
-
-
 
 alert("Élève enregistré avec succès !");
 
-
 });
 
-
 </script>
-
-
-
 </body>
 
 </html>
