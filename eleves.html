@@ -272,3 +272,221 @@ Enregistrer l'élève
 
 
 </div>
+<script>
+
+
+// Fonction pour afficher un élève dans le tableau
+
+function ajouterLigne(eleve){
+
+
+let table = document.getElementById("tableEleves");
+
+let ligne = table.insertRow(-1);
+
+
+
+ligne.insertCell(0).innerHTML = eleve.matricule;
+
+ligne.insertCell(1).innerHTML = eleve.nom;
+
+ligne.insertCell(2).innerHTML = eleve.prenom;
+
+ligne.insertCell(3).innerHTML = eleve.sexe;
+
+ligne.insertCell(4).innerHTML = eleve.niveau;
+
+ligne.insertCell(5).innerHTML = eleve.classe;
+
+ligne.insertCell(6).innerHTML = eleve.parent;
+
+ligne.insertCell(7).innerHTML = eleve.telephone;
+
+
+ligne.insertCell(8).innerHTML =
+'<button onclick="supprimerLigne(this)">🗑️ Supprimer</button>';
+
+}
+
+
+
+// Charger les élèves déjà enregistrés
+
+window.onload = function(){
+
+
+let eleves = JSON.parse(localStorage.getItem("elevesSJB")) || [];
+
+
+eleves.forEach(function(eleve){
+
+ajouterLigne(eleve);
+
+});
+
+
+};
+
+
+
+
+
+// Enregistrer un nouvel élève
+
+document.getElementById("btnEleve").addEventListener("click", function(){
+
+
+
+let eleve = {
+
+
+matricule : document.getElementById("matricule").value,
+
+nom : document.getElementById("nom").value,
+
+prenom : document.getElementById("prenom").value,
+
+sexe : document.getElementById("sexe").value,
+
+niveau : document.getElementById("niveau").value,
+
+classe : document.getElementById("classe").value,
+
+parent : document.getElementById("parent").value,
+
+telephone : document.getElementById("telephone").value
+
+
+};
+
+
+
+
+if(eleve.nom === "" || eleve.prenom === "" || eleve.classe === ""){
+
+
+alert("Veuillez renseigner au minimum le nom, le prénom et la classe.");
+
+
+return;
+
+
+}
+
+
+
+
+
+// Ajouter au tableau
+
+ajouterLigne(eleve);
+
+
+
+
+// Sauvegarder
+
+let eleves = JSON.parse(localStorage.getItem("elevesSJB")) || [];
+
+
+eleves.push(eleve);
+
+
+localStorage.setItem("elevesSJB", JSON.stringify(eleves));
+
+
+
+
+
+// Vider le formulaire
+
+document.getElementById("matricule").value="";
+
+document.getElementById("nom").value="";
+
+document.getElementById("prenom").value="";
+
+document.getElementById("sexe").value="";
+
+document.getElementById("niveau").value="";
+
+document.getElementById("classe").value="";
+
+document.getElementById("parent").value="";
+
+document.getElementById("telephone").value="";
+
+
+
+alert("Élève enregistré avec succès !");
+
+
+});
+
+
+
+
+
+
+// Supprimer un élève
+
+function supprimerLigne(bouton){
+
+
+
+if(confirm("Voulez-vous vraiment supprimer cet élève ?")){
+
+
+let ligne = bouton.parentNode.parentNode;
+
+
+// récupérer les informations de l'élève
+
+let nom = ligne.cells[1].innerHTML;
+
+let prenom = ligne.cells[2].innerHTML;
+
+
+
+// supprimer la ligne
+
+ligne.remove();
+
+
+
+// mettre à jour la sauvegarde
+
+let eleves = JSON.parse(localStorage.getItem("elevesSJB")) || [];
+
+
+
+eleves = eleves.filter(function(eleve){
+
+
+return !(eleve.nom === nom && eleve.prenom === prenom);
+
+
+});
+
+
+
+localStorage.setItem("elevesSJB", JSON.stringify(eleves));
+
+
+
+alert("Élève supprimé avec succès !");
+
+
+}
+
+
+}
+
+
+</script>
+
+
+
+</body>
+
+</html>
