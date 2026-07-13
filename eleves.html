@@ -8,12 +8,11 @@
 
 <title>SIGEF-SJB - Gestion des élèves</title>
 
-
 <style>
 
 body{
     margin:0;
-    font-family:Arial,sans-serif;
+    font-family:Arial, sans-serif;
     background:#f4f6f9;
 }
 
@@ -26,6 +25,11 @@ header{
 }
 
 
+header h1{
+    margin:0;
+}
+
+
 .container{
     padding:30px;
 }
@@ -34,37 +38,33 @@ header{
 .card{
     background:white;
     padding:20px;
-    border-radius:10px;
     margin-bottom:20px;
+    border-radius:10px;
     box-shadow:0 3px 8px rgba(0,0,0,0.1);
 }
 
 
 form{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(3,1fr);
     gap:15px;
 }
 
 
 input, select{
-
     padding:10px;
     border:1px solid #ccc;
     border-radius:5px;
-
 }
 
 
 button{
-
     background:#0b4f6c;
     color:white;
     border:none;
     padding:12px;
     border-radius:5px;
     cursor:pointer;
-
 }
 
 
@@ -74,89 +74,32 @@ button:hover{
 
 
 table{
-
     width:100%;
     border-collapse:collapse;
     margin-top:15px;
-    table-layout:fixed;
-
 }
 
 
 th{
-
     background:#16324f;
     color:white;
     padding:12px;
-    text-align:center;
 }
 
 
 td{
-
     padding:10px;
-    border-bottom:1px solid #ddd;
     text-align:center;
-    word-wrap:break-word;
-
+    border-bottom:1px solid #ddd;
 }
 
-
-th:nth-child(1),
-td:nth-child(1){
-
-    width:12%;
-
-}
-
-
-th:nth-child(2),
-td:nth-child(2){
-
-    width:15%;
-
-}
-
-
-th:nth-child(3),
-td:nth-child(3){
-
-    width:15%;
-
-}
-
-
-th:nth-child(4),
-td:nth-child(4){
-
-    width:15%;
-
-}
-
-
-th:nth-child(5),
-td:nth-child(5){
-
-    width:25%;
-
-}
-
-
-th:nth-child(6),
-td:nth-child(6){
-
-    width:18%;
-
-}
 
 .retour{
-
     display:inline-block;
     margin-top:20px;
     text-decoration:none;
     color:#0b4f6c;
     font-weight:bold;
-
 }
 
 
@@ -164,9 +107,7 @@ td:nth-child(6){
 
 </head>
 
-
 <body>
-
 
 <header>
 
