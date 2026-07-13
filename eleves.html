@@ -261,12 +261,29 @@ let ligne = bouton.parentNode.parentNode;
 
 ligne.remove();
 
+alert("Élève enregistré avec succès !");
+
+});
+
+
+// Fonction suppression élève
+
+function supprimerLigne(bouton){
+
+if(confirm("Voulez-vous vraiment supprimer cet élève ?")){
+
+let ligne = bouton.parentNode.parentNode;
+
+ligne.remove();
+
 alert("Élève supprimé.");
 
 }
 
 }
-<script>
+
+
+</script>
 
 // Charger les élèves déjà enregistrés
 window.onload = function(){
