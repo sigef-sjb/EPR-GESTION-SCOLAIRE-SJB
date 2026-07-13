@@ -253,7 +253,19 @@ Enregistrer l'élève
 </div>
 
 
+function supprimerLigne(bouton){
 
+if(confirm("Voulez-vous vraiment supprimer cet élève ?")){
+
+let ligne = bouton.parentNode.parentNode;
+
+ligne.remove();
+
+alert("Élève supprimé.");
+
+}
+
+}
 <script>
 
 // Charger les élèves déjà enregistrés
