@@ -173,10 +173,47 @@ Enregistrer l'élève
 </a>
 
 </div>
-<script>
-document.querySelector("button").addEventListener("click", function() {
-    alert("Le bouton fonctionne !");
+document.getElementById("btnEleve").addEventListener("click", function(){
+
+let matricule = document.getElementById("matricule").value;
+let nom = document.getElementById("nom").value;
+let prenom = document.getElementById("prenom").value;
+let classe = document.getElementById("classe").value;
+let parent = document.getElementById("parent").value;
+let telephone = document.getElementById("telephone").value;
+
+
+if(nom==="" || prenom==="" || classe===""){
+    alert("Veuillez remplir au minimum le nom, le prénom et la classe.");
+    return;
+}
+
+
+let table = document.getElementById("tableEleves");
+
+
+let ligne = table.insertRow(-1);
+
+
+ligne.insertCell(0).innerHTML = matricule;
+ligne.insertCell(1).innerHTML = nom;
+ligne.insertCell(2).innerHTML = prenom;
+ligne.insertCell(3).innerHTML = classe;
+ligne.insertCell(4).innerHTML = parent;
+ligne.insertCell(5).innerHTML = telephone;
+
+
+document.getElementById("matricule").value="";
+document.getElementById("nom").value="";
+document.getElementById("prenom").value="";
+document.getElementById("classe").value="";
+document.getElementById("parent").value="";
+document.getElementById("telephone").value="";
+
+
+alert("Élève enregistré avec succès !");
+
+
 });
+
 </script>
-</body>
-</html>
