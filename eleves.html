@@ -148,23 +148,34 @@ td{
 </select>
 
 
-<input type="date" id="date_naissance">
+<input type="date" id="dateNaissance">
+
+
+
+<select id="niveau">
+
+<option value="">Choisir le niveau</option>
+
+<option>Maternelle</option>
+
+<option>Primaire</option>
+
+</select>
+
 
 
 <select id="classe">
 
-<option value="">Choisir une classe</option>
+<option value="">Choisir la classe</option>
 
-<option disabled>----- MATERNELLE -----</option>
-
+<option disabled>--- MATERNELLE ---</option>
 <option>Crèche</option>
 <option>Petite Section (PS)</option>
 <option>Moyenne Section (MS)</option>
 <option>Grande Section (GS)</option>
 
 
-<option disabled>----- PRIMAIRE -----</option>
-
+<option disabled>--- PRIMAIRE ---</option>
 <option>CP1</option>
 <option>CP2</option>
 <option>CE1</option>
@@ -183,9 +194,13 @@ td{
 <input type="tel" id="telephone" placeholder="Téléphone">
 
 
+
 <button type="button" id="btnEleve">
+
 Enregistrer l'élève
+
 </button>
+
 
 
 </form>
@@ -196,11 +211,11 @@ Enregistrer l'élève
 
 
 
-
 <div class="card">
 
 
 <h2>Liste des élèves</h2>
+
 
 
 <table id="tableEleves">
@@ -211,6 +226,8 @@ Enregistrer l'élève
 <th>Matricule</th>
 <th>Nom</th>
 <th>Prénom</th>
+<th>Sexe</th>
+<th>Niveau</th>
 <th>Classe</th>
 <th>Parent</th>
 <th>Téléphone</th>
@@ -225,7 +242,6 @@ Enregistrer l'élève
 
 
 
-
 <a class="retour" href="index.html">
 
 ⬅ Retour au tableau de bord
@@ -235,7 +251,6 @@ Enregistrer l'élève
 
 
 </div>
-
 
 
 
