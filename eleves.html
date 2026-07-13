@@ -258,58 +258,87 @@ Enregistrer l'élève
 
 document.getElementById("btnEleve").addEventListener("click", function(){
 
-    let matricule = document.getElementById("matricule").value;
-    let nom = document.getElementById("nom").value;
-    let prenom = document.getElementById("prenom").value;
-    let classe = document.getElementById("classe").value;
-    let parent = document.getElementById("parent").value;
-    let telephone = document.getElementById("telephone").value;
+
+let matricule = document.getElementById("matricule").value;
+
+let nom = document.getElementById("nom").value;
+
+let prenom = document.getElementById("prenom").value;
+
+let sexe = document.getElementById("sexe").value;
+
+let niveau = document.getElementById("niveau").value;
+
+let classe = document.getElementById("classe").value;
+
+let parent = document.getElementById("parent").value;
+
+let telephone = document.getElementById("telephone").value;
 
 
-    if(nom === "" || prenom === "" || classe === ""){
 
-        alert("Veuillez remplir le nom, le prénom et la classe.");
+if(nom === "" || prenom === "" || classe === ""){
 
-        return;
-    }
+alert("Veuillez renseigner au minimum le nom, le prénom et la classe.");
 
+return;
 
-    let table = document.getElementById("tableEleves");
-
-
-    let ligne = table.insertRow(-1);
+}
 
 
-    let cellule1 = ligne.insertCell(0);
-    let cellule2 = ligne.insertCell(1);
-    let cellule3 = ligne.insertCell(2);
-    let cellule4 = ligne.insertCell(3);
-    let cellule5 = ligne.insertCell(4);
-    let cellule6 = ligne.insertCell(5);
+
+let table = document.getElementById("tableEleves");
+
+let ligne = table.insertRow(-1);
 
 
-    cellule1.innerHTML = matricule;
-    cellule2.innerHTML = nom;
-    cellule3.innerHTML = prenom;
-    cellule4.innerHTML = classe;
-    cellule5.innerHTML = parent;
-    cellule6.innerHTML = telephone;
+
+ligne.insertCell(0).innerHTML = matricule;
+
+ligne.insertCell(1).innerHTML = nom;
+
+ligne.insertCell(2).innerHTML = prenom;
+
+ligne.insertCell(3).innerHTML = sexe;
+
+ligne.insertCell(4).innerHTML = niveau;
+
+ligne.insertCell(5).innerHTML = classe;
+
+ligne.insertCell(6).innerHTML = parent;
+
+ligne.insertCell(7).innerHTML = telephone;
 
 
-    document.getElementById("matricule").value = "";
-    document.getElementById("nom").value = "";
-    document.getElementById("prenom").value = "";
-    document.getElementById("classe").value = "";
-    document.getElementById("parent").value = "";
-    document.getElementById("telephone").value = "";
+
+// Nettoyage du formulaire après enregistrement
+
+document.getElementById("matricule").value="";
+
+document.getElementById("nom").value="";
+
+document.getElementById("prenom").value="";
+
+document.getElementById("sexe").value="";
+
+document.getElementById("niveau").value="";
+
+document.getElementById("classe").value="";
+
+document.getElementById("parent").value="";
+
+document.getElementById("telephone").value="";
 
 
-    alert("Élève enregistré avec succès !");
+
+alert("Élève enregistré avec succès !");
+
 
 });
 
 
 </script>
+
 
 
 </body>
