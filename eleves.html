@@ -283,18 +283,35 @@ alert("Élève supprimé.");
 }
 
 
-</script>
+<script>
 
-// Charger les élèves déjà enregistrés
+// Charger les élèves enregistrés au démarrage
+
 window.onload = function(){
 
 let eleves = JSON.parse(localStorage.getItem("elevesSJB")) || [];
 
 let table = document.getElementById("tableEleves");
 
+
 eleves.forEach(function(eleve){
 
+ajouterLigne(eleve);
+
+});
+
+};
+
+
+
+// Fonction pour ajouter une ligne dans le tableau
+
+function ajouterLigne(eleve){
+
+let table = document.getElementById("tableEleves");
+
 let ligne = table.insertRow(-1);
+
 
 ligne.insertCell(0).innerHTML = eleve.matricule;
 ligne.insertCell(1).innerHTML = eleve.nom;
@@ -304,28 +321,42 @@ ligne.insertCell(4).innerHTML = eleve.niveau;
 ligne.insertCell(5).innerHTML = eleve.classe;
 ligne.insertCell(6).innerHTML = eleve.parent;
 ligne.insertCell(7).innerHTML = eleve.telephone;
+
 ligne.insertCell(8).innerHTML =
 '<button onclick="supprimerLigne(this)">🗑️ Supprimer</button>';
-});
+
+}
+
+
+
+// Enregistrer un nouvel élève
+
+document.getElementById("btnEleve").addEventListener("click", function(){
+
+
+let eleve = {
+
+matricule: document.getElementById("matricule").value,
+
+nom: document.getElementById("nom").value,
+
+prenom: document.getElementById("prenom").value,
+
+sexe: document.getElementById("sexe").value,
+
+niveau: document.getElementById("niveau").value,
+
+classe: document.getElementById("classe").value,
+
+parent: document.getElementById("parent").value,
+
+telephone: document.getElementById("telephone").value
 
 };
 
 
 
-// Enregistrement d'un nouvel élève
-document.getElementById("btnEleve").addEventListener("click", function(){
-
-let matricule = document.getElementById("matricule").value;
-let nom = document.getElementById("nom").value;
-let prenom = document.getElementById("prenom").value;
-let sexe = document.getElementById("sexe").value;
-let niveau = document.getElementById("niveau").value;
-let classe = document.getElementById("classe").value;
-let parent = document.getElementById("parent").value;
-let telephone = document.getElementById("telephone").value;
-
-
-if(nom === "" || prenom === "" || classe === ""){
+if(eleve.nom === "" || eleve.prenom === "" || eleve.classe === ""){
 
 alert("Veuillez renseigner au minimum le nom, le prénom et la classe.");
 
@@ -334,39 +365,23 @@ return;
 }
 
 
-// Ajout dans le tableau
-let table = document.getElementById("tableEleves");
 
-let ligne = table.insertRow(-1);
-
-ligne.insertCell(0).innerHTML = matricule;
-ligne.insertCell(1).innerHTML = nom;
-ligne.insertCell(2).innerHTML = prenom;
-ligne.insertCell(3).innerHTML = sexe;
-ligne.insertCell(4).innerHTML = niveau;
-ligne.insertCell(5).innerHTML = classe;
-ligne.insertCell(6).innerHTML = parent;
-ligne.insertCell(7).innerHTML = telephone;
+ajouterLigne(eleve);
 
 
-// Sauvegarde locale
+
+// Sauvegarde
+
 let eleves = JSON.parse(localStorage.getItem("elevesSJB")) || [];
 
-eleves.push({
-matricule: matricule,
-nom: nom,
-prenom: prenom,
-sexe: sexe,
-niveau: niveau,
-classe: classe,
-parent: parent,
-telephone: telephone
-});
+eleves.push(eleve);
 
 localStorage.setItem("elevesSJB", JSON.stringify(eleves));
 
 
-// Réinitialisation du formulaire
+
+// Vider le formulaire
+
 document.getElementById("matricule").value="";
 document.getElementById("nom").value="";
 document.getElementById("prenom").value="";
@@ -376,11 +391,78 @@ document.getElementById("classe").value="";
 document.getElementById("parent").value="";
 document.getElementById("telephone").value="";
 
+
 alert("Élève enregistré avec succès !");
+
 
 });
 
+
+
+
+// Supprimer un élève
+
+function supprimerLigne(bouton){
+
+
+if(confirm("Voulez-vous vraiment supprimer cet élève ?")){
+
+
+let ligne = bouton.parentNode.parentNode;
+
+
+// Récupérer le nom de l'élève supprimé
+
+let nom = ligne.cells[1].innerHTML;
+
+let prenom = ligne.cells[2].innerHTML;
+
+
+
+ligne.remove();
+
+
+
+let eleves = JSON.parse(localStorage.getItem("elevesSJB")) || [];
+
+
+eleves = eleves.filter(function(eleve){
+
+return !(eleve.nom === nom && eleve.prenom === prenom);
+
+});
+
+
+localStorage.setItem("elevesSJB", JSON.stringify(eleves));
+
+
+alert("Élève supprimé avec succès !");
+
+
+}
+
+
+}
+
+
 </script>
+
+Après cela :
+
+Commit changes
+Attendez 1 minute
+Ctrl + F5
+Testez un élève
+
+Résultat attendu :
+
+Le bouton 🗑️ apparaît ;
+Le clic supprime la ligne ;
+Après fermeture et réouverture, l'élève supprimé ne revient plus.
+
+Vous avez eu le bon réflexe : dans un vrai développement, quand une partie devient confuse, on nettoie et on repart sur une base saine. C’est exactement ce que ferait un développeur. 👍
+
+Faites cette étape et dites-moi simplement le résultat.
 </body>
 
 </html>
