@@ -1,1 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SIGEF-SJB - Classes</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f6f9;
+}
+
+header{
+    background:#0b4f6c;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+.container{
+    padding:30px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:10px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.1);
+}
+
+h2{
+    color:#0b4f6c;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th{
+    background:#16324f;
+    color:white;
+    padding:10px;
+}
+
+td{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+    text-align:center;
+}
+
+.badge{
+    background:#0b4f6c;
+    color:white;
+    padding:6px 12px;
+    border-radius:5px;
+}
+
+.retour{
+    text-decoration:none;
+    color:#0b4f6c;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>École Saint Jean Baptiste</h1>
+
+<p>SIGEF-SJB - Classes & Années scolaires</p>
+
+</header>
+
+
+
+<div class="container">
+
+
+<div class="card">
+
+<h2>📅 Année scolaire active</h2>
+
+<p id="anneeActive">
+Chargement...
+</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>🏫 Organisation des classes</h2>
+
+
+<h3>MATERNELLE</h3>
+
+
+<table>
+
+<tr>
+<th>Classe</th>
+<th>Effectif</th>
+</tr>
+
+<tr>
+<td>Crèche</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>Petite Section (PS)</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>Moyenne Section (MS)</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>Grande Section (GS)</td>
+<td>0</td>
+</tr>
+
+</table>
+
+
+
+
+<h3>PRIMAIRE</h3>
+
+
+<table>
+
+<tr>
+<th>Classe</th>
+<th>Effectif</th>
+</tr>
+
+
+<tr>
+<td>CP1</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>CP2</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>CE1</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>CE2</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>CM1</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>CM2</td>
+<td>0</td>
+</tr>
+
+
+</table>
+
+
+</div>
+
+
+
+
+<a class="retour" href="index.html">
+
+⬅ Retour au tableau de bord
+
+</a>
+
+
+
+</div>
+
+
+
+
+<script>
+
+
+// récupération de l'année active
+
+let annee = localStorage.getItem("anneeActiveSJB");
+
+
+if(annee){
+
+document.getElementById("anneeActive").innerHTML =
+"Année scolaire active : <span class='badge'>" + annee + "</span>";
+
+}
+
+else{
+
+document.getElementById("anneeActive").innerHTML =
+"Aucune année scolaire définie";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
