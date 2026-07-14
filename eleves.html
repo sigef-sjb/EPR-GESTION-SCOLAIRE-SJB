@@ -1,1 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>SIGEF-SJB - Gestion des élèves</title>
 
+<style>
+body{
+font-family:Arial;
+background:#f4f6f9;
+margin:0;
+padding:20px;
+}
+
+h1{
+color:#0b4f6c;
+}
+
+.card{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:10px;
+}
+
+input,select,button{
+padding:8px;
+margin:5px;
+}
+
+button{
+background:#0b4f6c;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:8px;
+text-align:center;
+}
+
+th{
+background:#0b4f6c;
+color:white;
+}
+
+.sup{
+background:#b00020;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🏫 École Saint Jean Baptiste</h1>
+<h2>SIGEF-SJB - Gestion des élèves</h2>
+
+
+<div class="card">
+
+<h3>📅 Année scolaire</h3>
+
+<div id="annee"></div>
+
+</div>
+
+
+<div class="card">
+
+<h3>👨‍🎓 Ajouter un élève</h3>
+
+<input id="matricule" placeholder="Matricule">
+<input id="nom" placeholder="Nom">
+<input id="prenom" placeholder="Prénom">
+
+<input id="dateNaissance" type="date">
+
+<select id="classe">
+<option value="">Classe</option>
+<option>Crèche</option>
+<option>PS</option>
+<option>MS</option>
+<option>GS</option>
+<option>CP1</option>
+<option>CP2</option>
+<option>CE1</option>
+<option>CE2</option>
+<option>CM1</option>
+<option>CM2</option>
+</select>
+
+<input id="parent" placeholder="Parent">
+<input id="telephone" placeholder="Téléphone">
+
+
+<button onclick="ajouterEleve()">
+Enregistrer
+</button>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>🔎 Recherche</h3>
+
+<input id="recherche" placeholder="Nom, prénom, matricule" onkeyup="afficherEleves()">
+
+</div>
+
+
+
+<div class="card">
+
+<h3>📋 Liste des élèves</h3>
+
+<table id="table">
+
+</table>
+
+</div>
+
+
+<script>
+
+let anneeActive = localStorage.getItem("anneeActiveSJB") || "2025-2026";
+
+document.getElementById("annee").innerHTML =
+"Année active : " + anneeActive;
+
+
+function ajouterEleve(){
+
+let eleve={
+
+matricule:matricule.value,
+nom:nom.value.toUpperCase(),
+prenom:prenom.value,
+dateNaissance:dateNaissance.value,
+classe:classe.value,
+parent:parent.value,
+telephone:telephone.value,
+annee:anneeActive
+
+};
+
+
+if(!eleve.nom || !eleve.prenom || !eleve.classe){
+
+alert("Nom, prénom et classe obligatoires");
+return;
+
+}
+
+
+let liste =
+JSON.parse(localStorage.getItem("elevesSJB")) || [];
+
+
+liste.push(eleve);
+
+
+localStorage.setItem(
+"elevesSJB",
+JSON.stringify(liste)
+);
+
+
+document.querySelectorAll("input").forEach(e=>e.value="");
+classe.value="";
+
+
+afficherEleves();
+
+}
+
+
+
+function afficherEleves(){
+
+let recherche =
+document.getElementById("recherche").value.toLowerCase();
+
+
+let liste =
+JSON.parse(localStorage.getItem("elevesSJB")) || [];
+
+
+liste = liste.filter(e=>
+
+(e.nom+" "+e.prenom+" "+e.matricule)
+.toLowerCase()
+.includes(recherche)
+
+);
+
+
+liste.sort((a,b)=>a.nom.localeCompare(b.nom));
+
+
+let html=`
+
+<tr>
+<th>Matricule</th>
+<th>Nom</th>
+<th>Prénom</th>
+<th>Date naissance</th>
+<th>Classe</th>
+<th>Parent</th>
+<th>Téléphone</th>
+<th>Action</th>
+</tr>
+`;
+
+
+liste.forEach((e,i)=>{
+
+html+=`
+
+<tr>
+
+<td>${e.matricule}</td>
+<td>${e.nom}</td>
+<td>${e.prenom}</td>
+<td>${e.dateNaissance}</td>
+<td>${e.classe}</td>
+<td>${e.parent}</td>
+<td>${e.telephone}</td>
+
+<td>
+<button class="sup" onclick="supprimerEleve('${e.matricule}')">
+🗑️
+</button>
+</td>
+
+</tr>
+
+`;
+
+});
+
+
+document.getElementById("table").innerHTML=html;
+
+
+}
+
+
+
+function supprimerEleve(matricule){
+
+if(!confirm("Supprimer cet élève ?"))
+return;
+
+
+let liste =
+JSON.parse(localStorage.getItem("elevesSJB")) || [];
+
+
+liste =
+liste.filter(e=>e.matricule!==matricule);
+
+
+localStorage.setItem(
+"elevesSJB",
+JSON.stringify(liste)
+);
+
+
+afficherEleves();
+
+}
+
+
+afficherEleves();
+
+
+</script>
+
+</body>
+</html>
