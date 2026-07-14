@@ -236,12 +236,16 @@ html+=`
 <td>${e.telephone}</td>
 
 <td>
+
+<button onclick="demanderModification('${e.matricule}')">
+📝
+</button>
+
 <button class="sup" onclick="supprimerEleve('${e.matricule}')">
 🗑️
 </button>
-</td>
 
-</tr>
+</td>
 
 `;
 
