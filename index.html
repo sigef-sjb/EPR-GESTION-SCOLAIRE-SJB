@@ -1,1 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SIGEF-SJB | Tableau de bord</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f4f6f9;
+}
+
+
+header{
+    background:#0b4f6c;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+
+header h1{
+    margin:0;
+    font-size:28px;
+}
+
+
+.container{
+    display:flex;
+    min-height:90vh;
+}
+
+
+.sidebar{
+    width:260px;
+    background:#16324f;
+    padding-top:20px;
+}
+
+
+.sidebar a{
+    display:block;
+    color:white;
+    padding:15px;
+    text-decoration:none;
+    font-size:15px;
+}
+
+
+.sidebar a:hover{
+    background:#0b4f6c;
+}
+
+
+.content{
+    flex:1;
+    padding:30px;
+}
+
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+
+.card{
+
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.1);
+
+}
+
+
+.card h3{
+    color:#0b4f6c;
+}
+
+
+.nombre{
+
+    font-size:35px;
+    font-weight:bold;
+
+}
+
+
+
+footer{
+
+    background:#16324f;
+    color:white;
+    text-align:center;
+    padding:15px;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>École Saint Jean Baptiste</h1>
+
+<p>SIGEF-SJB - Système Intégré de Gestion de l'Établissement</p>
+
+<p>Année scolaire active : <strong>2026-2027</strong></p>
+
+</header>
+
+
+
+<div class="container">
+
+
+
+<div class="sidebar">
+
+
+<a href="index.html">
+🏠 Tableau de bord
+</a>
+
+
+<a href="eleves.html">
+👨‍🎓 Élèves & Scolarité
+</a>
+
+
+<a href="classes.html">
+📚 Classes & Années scolaires
+</a>
+
+
+<a href="notes.html">
+📝 Notes & Bulletins
+</a>
+
+
+<a href="paiements.html">
+💰 Finances & Paiements
+</a>
+
+
+<a href="gouter-dejeuner.html">
+🍽️ Goûter & Déjeuner
+</a>
+
+
+<a href="comptabilite.html">
+📊 Comptabilité & Rapports
+</a>
+
+
+<a href="personnel.html">
+👥 Personnel & Paie
+</a>
+
+
+<a href="tarifs.html">
+🎓 Tarifs, Bourses & Exonérations
+</a>
+
+
+<a href="utilisateurs.html">
+🔐 Utilisateurs & Sécurité
+</a>
+
+
+<a href="parametres.html">
+⚙️ Paramètres
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="content">
+
+
+<h2>Tableau de bord</h2>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<h3>👨‍🎓 Élèves</h3>
+
+<div class="nombre">0</div>
+
+<p>Effectif total</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>📚 Classes</h3>
+
+<div class="nombre">10</div>
+
+<p>Maternelle + Primaire</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>💰 Paiements</h3>
+
+<div class="nombre">0</div>
+
+<p>Situation financière</p>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h3>📊 Dépenses</h3>
+
+<div class="nombre">0</div>
+
+<p>Comptabilité</p>
+
+</div>
+
+
+
+</div>
+
+
+
+
+<br>
+
+
+
+<div class="card">
+
+<h3>Bienvenue dans SIGEF-SJB</h3>
+
+
+<p>
+
+Cette plateforme permettra la gestion intégrée de l'École Saint Jean Baptiste :
+
+élèves, classes, paiements, comptabilité, personnel, bulletins et suivi administratif.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+<footer>
+
+SIGEF-SJB Version 2.0 - École Saint Jean Baptiste
+
+</footer>
+
+
+
+</body>
+
+</html>
